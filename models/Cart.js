@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const cartSchema = new mongoose.Schema({
   product: {
-    type: String,   // ✅ SIMPLE (no Product model error)
+    type: String,   
     required: true,
   },
   quantity: {

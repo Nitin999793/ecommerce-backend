@@ -1,10 +1,9 @@
 const Product = require("../models/Product");
 const { validationResult } = require("express-validator");
 
-// ➕ CREATE PRODUCT
 const createProduct = async (req, res) => {
   try {
-    // ✅ VALIDATION CHECK
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -33,7 +32,6 @@ const createProduct = async (req, res) => {
   }
 };
 
-// 📥 GET PRODUCTS
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -44,7 +42,6 @@ const getProducts = async (req, res) => {
   }
 };
 
-// ✏️ UPDATE PRODUCT
 const updateProduct = async (req, res) => {
   try {
     const updated = await Product.findByIdAndUpdate(
@@ -64,7 +61,6 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// ❌ DELETE PRODUCT
 const deleteProduct = async (req, res) => {
   try {
     const deleted = await Product.findByIdAndDelete(req.params.id);

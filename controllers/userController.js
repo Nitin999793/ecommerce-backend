@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// 🔐 REGISTER
+
 const registerUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ msg: "User already exists" });
     }
 
-    // 🔥 HASH PASSWORD
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({
@@ -32,7 +32,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-// 🔐 LOGIN
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -43,17 +42,17 @@ const loginUser = async (req, res) => {
       return res.status(400).json({ msg: "User not found" });
     }
 
-    // 🔥 COMPARE PASSWORD
+   
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(400).json({ msg: "Invalid password" });
     }
 
-    // 🔥 GENERATE TOKEN
+
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
-      "secretkey", // later move to .env
+      "secretkey", 
       { expiresIn: "1d" }
     );
 

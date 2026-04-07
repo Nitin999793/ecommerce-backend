@@ -10,10 +10,10 @@ const {
   deleteProduct,
 } = require("../controllers/productController");
 
-// ✅ Auth Middleware
+
 const protect = require("../Middleware/authMiddleware");
 
-// ➕ CREATE PRODUCT (Protected + Validation)
+
 router.post(
   "/",
   protect,
@@ -37,14 +37,11 @@ router.post(
   ],
   createProduct
 );
-
-// 📥 GET ALL PRODUCTS (Public)
 router.get("/", getProducts);
 
-// ✏️ UPDATE PRODUCT (Protected)
 router.put("/:id", protect, updateProduct);
 
-// ❌ DELETE PRODUCT (Protected)
+
 router.delete("/:id", protect, deleteProduct);
 
 module.exports = router;

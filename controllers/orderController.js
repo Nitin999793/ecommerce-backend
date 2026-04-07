@@ -1,6 +1,5 @@
 const Order = require("../models/Order");
 
-// ➕ CREATE ORDER
 const createOrder = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
@@ -18,7 +17,6 @@ const createOrder = async (req, res) => {
   }
 };
 
-// 📥 GET ALL ORDERS
 const getOrders = async (req, res) => {
   try {
     const orders = await Order.find();
@@ -29,7 +27,6 @@ const getOrders = async (req, res) => {
   }
 };
 
-// 📥 GET SINGLE ORDER
 const getSingleOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
@@ -45,7 +42,6 @@ const getSingleOrder = async (req, res) => {
   }
 };
 
-// ❌ DELETE ORDER
 const deleteOrder = async (req, res) => {
   try {
     const deleted = await Order.findByIdAndDelete(req.params.id);
@@ -61,7 +57,6 @@ const deleteOrder = async (req, res) => {
   }
 };
 
-// 💰 MARK ORDER AS PAID
 const payOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);

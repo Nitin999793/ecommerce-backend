@@ -8,7 +8,7 @@ const protect = (req, res, next) => {
   }
 
   try {
-    token = token.split(" ")[1]; // Bearer token
+    token = token.split(" ")[1]; 
 
     const decoded = jwt.verify(token, "secretkey");
 

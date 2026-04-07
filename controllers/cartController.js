@@ -1,6 +1,6 @@
 const Cart = require("../models/Cart");
 
-// ➕ ADD
+
 const addToCart = async (req, res) => {
   try {
     const { product, quantity } = req.body;
@@ -18,7 +18,7 @@ const addToCart = async (req, res) => {
   }
 };
 
-// 📥 GET
+
 const getCartItems = async (req, res) => {
   try {
     const items = await Cart.find();
@@ -28,7 +28,7 @@ const getCartItems = async (req, res) => {
   }
 };
 
-// ❌ DELETE
+
 const deleteCartItem = async (req, res) => {
   try {
     const item = await Cart.findById(req.params.id);
